@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Statistics } from './Statistics/Statistics';
 
 export class App extends Component {
   state = {
@@ -16,30 +18,40 @@ export class App extends Component {
     });
   };
   countTotalFeedback = () => {
-    const total = Object.values(this.state).reduce((previousValue, number) => {
+    return Object.values(this.state).reduce((previousValue, number) => {
       return previousValue + number;
     }, 0);
-    return total;
   };
-  // countPositiveFeedbackPercentage = () => {
-  //   // const rating = p.dataset.total;
-  //   return rating;
-  // };
+  countPositiveFeedbackPercentage = total => {
+    return ((this.state.good / total) * 100).toFixed(0);
+  };
   render() {
+    const total = this.countTotalFeedback();
+    const raiting = this.countPositiveFeedbackPercentage(total);
     return (
-      <div>
-        <h1>Please leave feedback</h1>
-        <FeedbackOptions
-          options={Object.keys(this.state)}
-          // onLeaveFeedback={addStatistics}
-        />
-
-        <h2>Statistics</h2>
-        <p>Good: {this.state.good}</p>
-        <p>Neutral: {this.state.neutral}</p>
-        <p>Bad: {this.state.bad}</p>
-        <p>Total: {this.countTotalFeedback()}</p>
-        {/* <p>Positive feedback: {this.countPositiveFeedbackPercentage()} %</p> */}
+      <div
+        style={{
+          width: '500px',
+          margin: '0 auto',
+        }}
+      >
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.addStatistics}
+          />
+        </Section>
+        <Section title="Statistics">
+          {total !== 0 && (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={total}
+              positivePercentage={raiting}
+            />
+          )}
+        </Section>
       </div>
     );
   }

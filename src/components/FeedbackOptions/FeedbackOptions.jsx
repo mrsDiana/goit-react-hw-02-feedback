@@ -1,9 +1,21 @@
+import { ButtonStyle } from './FeedbackOptions.styled';
+
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  return options.map(button => {
-    return (
-      <button type="button" onClick={onLeaveFeedback}>
-        {button}
-      </button>
-    );
-  });
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '20px',
+      }}
+    >
+      {options.map((button, i) => {
+        return (
+          <ButtonStyle key={button[i]} type="button" onClick={onLeaveFeedback}>
+            {button}
+          </ButtonStyle>
+        );
+      })}
+    </div>
+  );
 };
