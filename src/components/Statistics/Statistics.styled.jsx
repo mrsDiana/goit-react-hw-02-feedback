@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
 export const Txt = styled.p`
-  margin: 0;
-  font-size: 30px;
+  margin: ${props => props.theme.space[0]};
+  font-size: ${props => props.theme.fontSizes[5]}px;
 `;

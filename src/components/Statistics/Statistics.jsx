@@ -9,7 +9,7 @@ export const Statistics = ({
   positivePercentage,
 }) => {
   return (
-    <Box display="grid" gridGap="10px" justifyItems="start">
+    <Box display="grid" gridGap={2} justifyItems="start">
       <Txt>Good: {good}</Txt>
       <Txt>Neutral: {neutral}</Txt>
       <Txt>Bad: {bad}</Txt>

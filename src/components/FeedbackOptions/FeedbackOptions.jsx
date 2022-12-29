@@ -6,7 +6,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
       style={{
         display: 'flex',
         justifyContent: 'center',
-        gap: '20px',
+        gap: `20px`,
       }}
     >
       {options.map((button, i) => {
