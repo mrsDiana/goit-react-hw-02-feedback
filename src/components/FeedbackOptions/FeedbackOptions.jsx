@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ButtonStyle } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
@@ -9,9 +10,9 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
         gap: `20px`,
       }}
     >
-      {options.map((button, i) => {
+      {options.map(button => {
         return (
-          <ButtonStyle key={button[i]} type="button" onClick={onLeaveFeedback}>
+          <ButtonStyle key={button} type="button" onClick={onLeaveFeedback}>
             {button}
           </ButtonStyle>
         );
@@ -19,3 +20,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     </div>
   );
 };
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+}.isRequired;
