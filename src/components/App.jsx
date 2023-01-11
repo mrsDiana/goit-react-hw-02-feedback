@@ -61,16 +61,3 @@ export class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  state: PropTypes.exact({
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-  }),
-  addStatistics: PropTypes.func,
-  countTotalFeedback: PropTypes.func,
-  countPositiveFeedbackPercentage: PropTypes.func,
-  total: PropTypes.number,
-  raiting: PropTypes.string,
-};
